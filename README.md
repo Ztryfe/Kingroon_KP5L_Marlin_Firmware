@@ -23,6 +23,9 @@ BLTouch:
 Put Z-probe plug to Z-Min endstop. Remove the Z-Min switch from the machine.
 
 Stealthburner Neopixel:
+Use this kit:
+https://www.fysetc.com/products/fysetc-voron-stealthburner-led-kit-neopixel-rgbw-mini-button-pcb-leds-ptfe-wiring-harness-for-voron2-4-trident-3d-printer-parts
+
 Connect 3 pin cable to the last white socket at the bottom left of the board, next to the 3dTouch pins. 
 The pinout is: [Signal - Ground - 5v]
 
@@ -39,3 +42,6 @@ Marlin/src/sd/SdFatConfig.h
 
 // Set USE_SOFTWARE_SPI nonzero to ALWAYS use Software SPI.
 #define USE_SOFTWARE_SPI 1  
+
+Otherwise you will run into this bug with SD Card access & Neopixels with the Kingroon KP3S Board inside the KP5L
+http://github.com/MarlinFirmware/Marlin/issues/25328
