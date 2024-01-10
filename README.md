@@ -1,5 +1,5 @@
 # Kingroon_KP5L_Marlin
-Kingroon KP5L Marlin Firmware
+Kingroon KP5L Marlin Firmware for custom StealthBurner toolhead
 
 Marlin 2.1.x bugfix firmware for Kingroon KP5L version distributed november 2023.
 
@@ -15,12 +15,27 @@ scroll long filenames,
 115200 serial port,
 290°C and 350°C (*) hotend.
 
-Verions available in both portrait and landscape display.
+See the archive Configuration.h and Configuration_adv.h files. 
 
-English language default can be changed from menu.
+Changes at wiring for the board:
 
-Into the archive Configuration.h and Configuration_adv.h files. 
+BLTouch:
+Put Z-probe plug to Z-Min endstop. Remove the Z-Min switch from the machine.
 
-(*) For 350°C is mandatory the use of HT-NTK100K B3950 thermistor with stainless steel 3mm capsule and update heatblock for this thermistor.
+Stealthburner Neopixel:
+Connect 3 pin cable to the last white socket at the bottom left of the board, next to the 3dTouch pins. 
+The pinout is: [Signal - Ground - 5v]
 
-NOTE: for BLTouch put Z-probe plug to Z-Min endstop and you can remove the Z-Min switch from the machine.
+Modify Marlin's files as follows:
+
+Marlin/src/sd/Sd2Card.h:
+
+/**
+ * Define SOFTWARE_SPI to use bit-bang SPI
+ */
+#define SOFTWARE_SPI
+
+Marlin/src/sd/SdFatConfig.h
+
+// Set USE_SOFTWARE_SPI nonzero to ALWAYS use Software SPI.
+#define USE_SOFTWARE_SPI 1  
