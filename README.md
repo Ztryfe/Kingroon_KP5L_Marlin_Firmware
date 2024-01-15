@@ -1,30 +1,38 @@
-# Kingroon_KP5L_Marlin
-Kingroon KP5L Marlin Firmware for custom StealthBurner toolhead
+# Kingroon KP5L With StealthBurner Toolhead
+Kingroon KP5L Marlin Firmware for custom StealthBurner Toolhead
 
 Marlin 2.1.x bugfix firmware for Kingroon KP5L version distributed november 2023.
 
-With and without BLTouch, 
-16 points manual Mesh bed leveling,
-25 pints automated bed leveling,
-Linear Advance K: 0.08 (PLA),
-Input shaping,
-double touch to select,
-scroll long filenames,
-5 languages,
-310x310 bed size,
+With BLTouch offset to match this carriage & bltouch mount:
+https://www.printables.com/model/428517-kp5l_carriage_sb
+
+
+25 points automated bed leveling mesh
+
+Linear Advance K: 0.08 (PLA)
+
+Input shaping & menu enabled
+
+Double touch to select & scroll long filenames.
+
+310x320 bed size, extend X axis for an eventual nozzle cleanner.
+
 115200 serial port,
-290°C and 350°C (*) hotend.
 
-See the archive Configuration.h and Configuration_adv.h files. 
+300C hotend using a ceramic ring heather and this Thermristor:
 
-Changes at wiring for the board:
+100kΩ ATC Semitec 104GT-2/104NT-4-R025H42G - Used in ParCan, J-Head, and E3D, SliceEngineering 300°C 
+
+
+# Wiring changes needed
 
 BLTouch:
-Put Z-probe plug to Z-Min endstop. Remove the Z-Min switch from the machine.
+Put Bltouch 2 pin plug to Z-Min endstop. 
+Remove the Z-Min switch from the machine.
 
-Stealthburner Neopixels:
+# Stealthburner Neopixels on Marlin and KP3S v1.3 Board
 
-Neopixels cannot bet setup without incurring in severe performance penalties due the use of software driven SPI
+Neopixels cannot bet setup without incurring in severe performance penalties due the use of software driven SPI.
 
 Here is how to set it up if you want to try ( or to eventually use Klipper)
 Use this kit:
@@ -53,5 +61,9 @@ Marlin/src/sd/SdFatConfig.h
 Otherwise you will run into a bug with SD Card access & Neopixels with the Kingroon KP3S Board inside the KP5L.
 http://github.com/MarlinFirmware/Marlin/issues/25328
 
-At the time of this change this made the cpu not being able to keep up on circles.
+Finally, at Configuration.h, uncomment this:
+
+// #define NEOPIXEL_LED
+
+At the time of this change this made the cpu not being able to keep up on circles / curves.
 Trying both SD Card and Neopixel enabled with regular DMA also caused hicups ( but was able to read SD Card)
