@@ -22,12 +22,19 @@ Changes at wiring for the board:
 BLTouch:
 Put Z-probe plug to Z-Min endstop. Remove the Z-Min switch from the machine.
 
-Stealthburner Neopixel:
+Stealthburner Neopixels:
+
+Neopixels cannot bet setup without incurring in severe performance penalties due the use of software driven SPI
+
+Here is how to set it up if you want to try ( or to eventually use Klipper)
 Use this kit:
 https://www.fysetc.com/products/fysetc-voron-stealthburner-led-kit-neopixel-rgbw-mini-button-pcb-leds-ptfe-wiring-harness-for-voron2-4-trident-3d-printer-parts
 
 Connect 3 pin cable to the last white socket at the bottom left of the board, next to the 3dTouch pins. 
 The pinout is: [Signal - Ground - 5v]
+This is "PB2" Port.
+
+To enable SOFTWARE_SPI for the SD Card:
 
 Modify Marlin's files as follows:
 
@@ -43,5 +50,8 @@ Marlin/src/sd/SdFatConfig.h
 // Set USE_SOFTWARE_SPI nonzero to ALWAYS use Software SPI.
 #define USE_SOFTWARE_SPI 1  
 
-Otherwise you will run into this bug with SD Card access & Neopixels with the Kingroon KP3S Board inside the KP5L
+Otherwise you will run into a bug with SD Card access & Neopixels with the Kingroon KP3S Board inside the KP5L.
 http://github.com/MarlinFirmware/Marlin/issues/25328
+
+At the time of this change this made the cpu not being able to keep up on circles.
+Trying both SD Card and Neopixel enabled with regular DMA also caused hicups ( but was able to read SD Card)

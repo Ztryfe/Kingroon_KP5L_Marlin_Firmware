@@ -3584,14 +3584,14 @@
 #endif
 
 // Support for Adafruit NeoPixel LED driver
-#define NEOPIXEL_LED
+// #define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
   #define NEOPIXEL_TYPE          NEO_GRBW // NEO_GRBW, NEO_RGBW, NEO_GRB, NEO_RBG, etc.
   #define NEOPIXEL_PIN                  PB2 // LED driving pin, last white socket at the bottom left of the board, next to the 3dTouch pins. Pinout is: Signal - Ground - 5v
   //#define NEOPIXEL2_TYPE  NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN               5
   #define NEOPIXEL_PIXELS              10 // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
-  #define NEOPIXEL_IS_SEQUENTIAL          // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
+  //#define NEOPIXEL_IS_SEQUENTIAL          // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
   #define NEOPIXEL_BRIGHTNESS         255 // Initial brightness (0-255)
   #define NEOPIXEL_STARTUP_TEST         // Cycle through colors at startup
 
@@ -3626,7 +3626,7 @@
  *  - Turn off after the print has finished and the user has pushed a button
  */
 #if ANY(BLINKM, RGB_LED, RGBW_LED, PCA9632, PCA9533, NEOPIXEL_LED)
-  #define PRINTER_EVENT_LEDS
+ // #define PRINTER_EVENT_LEDS
 #endif
 
 // @section servos
