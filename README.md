@@ -7,7 +7,7 @@ With BLTouch offset to match this carriage & bltouch mount:
 https://www.printables.com/model/428517-kp5l_carriage_sb
 
 
-25 points automated bed leveling mesh
+10x10 points Unified Bed Leveling
 
 Linear Advance K: 0.08 (PLA)
 
@@ -17,7 +17,7 @@ Double touch to select & scroll long filenames.
 
 310x320 bed size, extend X axis for an eventual nozzle cleanner.
 
-115200 serial port,
+115200 serial port, HOST COMMANDS enabled
 
 300C hotend using a ceramic ring heather and this Thermristor:
 
